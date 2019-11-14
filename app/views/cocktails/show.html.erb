@@ -1,0 +1,14 @@
+<div class="container">
+  <!-- @cocktail defined in `def show` -->
+  <h1><%= @cocktail.name %></h1>
+
+  <ul>
+    <!-- @cocktail.doses => because of `has_many :doses` -->
+    <% @cocktail.doses.each do |dose| %>
+      <!-- dose.ingredient => because of `belong_to :ingredient` -->
+      <li><%= dose.description %> <%= dose.ingredient.name %></li>
+    <% end %>
+  </ul>
+  <!-- check `rails routes` to know -->
+  <%= link_to "Add a new dose", new_cocktail_dose_path(@cocktail.id), class: "btn btn-success"  %>
+</div>
